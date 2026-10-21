@@ -1,4 +1,3 @@
-import { file } from "zod";
 import * as userRepository from "../repository/user.repository.js";
 import { userNotExist } from "../user.errors.js";
 import fs from 'node:fs';
@@ -25,7 +24,7 @@ export const uploadCv = async (userId, file) => {
   const user = await userRepository.findUserById(userId);
   if (!user) throw new AppError("User not found", 404);
 
-  if (user.cv && fs.existsSync(user.cvPath)) {
+  if (user.cvPath && fs.existsSync(user.cvPath)) {
     fs.unlinkSync(user.cvPath);
   }
 

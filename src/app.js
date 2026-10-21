@@ -16,7 +16,7 @@ app.use(cookieParser())
 
 app.use(cors( {origin: 'http://localhost:4200' }))
 
-app.use('/uplouds', express.static('uploads'))
+app.use('/src', express.static('uploads'))
 
 app.use (express.json());
 
