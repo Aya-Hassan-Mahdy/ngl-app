@@ -8,7 +8,7 @@ const messageSchema = new Schema({
         maxlength: 200,
         trim: true,
     },
-    reciver: {
+    receiver: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true,

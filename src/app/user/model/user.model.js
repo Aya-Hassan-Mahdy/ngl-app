@@ -1,4 +1,5 @@
 import { model, Schema } from "mongoose";
+import { string } from "zod";
 
 const userSchema = new Schema ({
     name: { 
@@ -41,8 +42,11 @@ const userSchema = new Schema ({
         type: String,
         enum: ['male','female'],
         default: 'male'
-    }
-},
+    },
+      profilePicPath: {type:String},
+      coverImagePaths: [String],
+      cvPath: String
+  },
  {
     timestamps: {
         createdAt: true,
