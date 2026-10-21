@@ -21,18 +21,15 @@ userRouter.get('/get-all-users',
 userRouter.post('/upload-profile-pic', authGuard,uploadSingleFile('pp'),
 fileValidation(), userController.uploadProfilePic);
 
-userRouter.post('/upload-cv', uploadSingleFile('cv' , allowedFields.files),
-fileValidation(allowedFields.files), (req, res, next) => {
-    console.log(req.files);
-    res.json('ok')
-}
-);
 
-userRouter.post('/upload-cover-images', uploadFilesArray('cover-images' , 3),
- (req, res, next) => {
-    console.log(req.files);
-    res.json('ok')
-}
-);
+
+userRouter.post('/upload-cv', authGuard, uploadSingleFile('cv' ,allowedFields.files),
+ fileValidation(allowedFields.files), userController.uploadCv);
+
+
+ userRouter.post('/upload-cover-images', authGuard, uploadFilesArray('cover-images', 3, allowedFields.images),
+ fileValidation(allowedFields.images),userController.uploadCoverImages);
+
+
 
 export default userRouter;
